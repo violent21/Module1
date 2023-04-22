@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        /* Стили для формы */
+        form {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete {
+            background-color: #af4c4c;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<a href="/">повернутися на головну</a>
+<h1>Управління задачами проекту</h1>
+
+<h2>Редагування користувача:</h2>
+<form th:each="el : ${users}" action="@{/editUserPage/{id}/edit(id=${el.id})}" method="post">
+    <label>Імʼя:</label>
+    <input th:value="${el.user_name}" type="text" name="user_name" required>
+    <label>Адреса електронної пошти:</label>
+    <input th:value="${el.user_email}" type="email" name="user_email" required>
+    <label>Пароль:</label>
+    <input th:value="${el.user_password}" type="password" name="user_password" required>
+    <input type="submit" value="Змінити">
+    <form th:action="@{/editUserPage/{id}/remove(id=${el.id})}" method="post">
+        <input class="delete" type="submit" value="Видалити">
+    </form>
+</form>
+
+</body>
+</html>

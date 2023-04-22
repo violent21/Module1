@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    /* Стили для формы */
+    form {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"] {
+      display: block;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+<a href="/">вернться на главную</a>
+<h1>Управление задачами проекта</h1>
+
+<h2>Добавить задачу:</h2>
+<form action="/newTask" method="post">
+  <label>Название задачи:</label>
+  <input type="text" name="task_name" required>
+  <label>Описание:</label>
+  <input type="text" name="description" required>
+  <label>Дата начала:</label>
+  <input type="date" name="start_date" required>
+  <label>Дата окончания:</label>
+  <input type="date" name="end_date" required>
+  <label>Ответственный:</label>
+  <input type="text" name="responsible_person" required>
+  <input type="submit" value="Добавить">
+</form>
+
+</body>
+</html>

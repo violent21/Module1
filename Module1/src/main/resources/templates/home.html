@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        form {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Управління задачами проекту</h1>
+
+<h2><a href="/newProject">>>Додати проект<<</a></h2>
+<h2>Список проектів</h2>
+<table>
+    <tr>
+        <th>Назва проекту</th>
+        <th>Опис</th>
+        <th>Дата початку</th>
+        <th>Дата закінчення</th>
+    </tr>
+    <tr th:each="el : ${projects}" class="editInformation">
+        <td>
+            <a th:href="@{/editProjectPage/{id}/edit/(id=${el.id})}" th:text="${el.project_name}">Project name</a>
+        </td>
+        <td th:text="${el.description}"/>
+        <td th:text="${el.start_date}"/>
+        <td th:text="${el.end_date}"/>
+    </tr>
+</table>
+
+<h2><a href="/newTask">>>Додати задачу<<</a></h2>
+<h2>Список задач</h2>
+<table>
+    <tr>
+        <th>Назва задачі</th>
+        <th>Опис</th>
+        <th>Дата початку</th>
+        <th>Дата закінчення</th>
+        <th>Відповідальний</th>
+    </tr>
+    <tr th:each="el : ${tasks}" class="editInformation">
+        <td>
+            <a th:href="@{/editTaskPage/{id}/edit/(id=${el.id})}" th:text="${el.task_name}">Task name</a>
+        </td>
+        <td th:text="${el.description}"/>
+        <td th:text="${el.start_date}"/>
+        <td th:text="${el.end_date}"/>
+        <td th:text="${el.responsible_person}"/>
+    </tr>
+</table>
+
+<h2><a href="/newUser">>>Додати користувача<<</a></h2>
+<h2>Список користувачів</h2>
+<table>
+    <tr>
+        <th>Імʼя</th>
+        <th>Адреса електронної пошти</th>
+        <th>Пароль</th>
+    </tr>
+    <tr th:each="el : ${users}" class="editInformation">
+        <td>
+            <a th:href="@{/editUserPage/{id}/edit/(id=${el.id})}" th:text="${el.user_name}">User name</a>
+        </td>
+        <td th:text="${el.user_email}"/>
+        <td th:text="${el.user_password}"/>
+    </tr>
+</table>
+
+</body>
+</html>
