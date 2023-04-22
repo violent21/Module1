@@ -71,22 +71,22 @@
   </style>
 </head>
 <body>
-<a href="/">вернться на главную</a>
-<h1>Управление задачами проекта</h1>
+<a href="/">повернутися на головну</a>
+<h1>Управління задачами проекту</h1>
 
-<h2>Редактирование проекта</h2>
+<h2>Редагування проекту</h2>
 <form th:each="el : ${projects}" action="@{/editProjectPage/{id}/edit(id=${el.id})}" method="post">
-  <label>Название проекта:</label>
+  <label>Назва проекту:</label>
   <input th:value="${el.project_name}" type="text" name="project_name" required>
-  <label>Описание:</label>
+  <label>Опис:</label>
   <input th:value="${el.description}" type="text" name="project_description" required>
-  <label>Дата начала:</label>
+  <label>Дата початку:</label>
   <input th:value="${el.start_date}" type="date" name="project_start_date" required>
-  <label>Дата окончания:</label>
+  <label>Дата закінчення:</label>
   <input th:value="${el.end_date}" type="date" name="project_end_date" required>
-  <input type="submit" value="Изменить">
+  <input type="submit" value="Змінити">
   <form th:action="@{/editProjectPage/{id}/remove(id=${el.id})}" method="post">
-    <input class="delete" type="submit" value="Удалить">
+    <input class="delete" type="submit" value="Видалити">
   </form>
 </form>
 
